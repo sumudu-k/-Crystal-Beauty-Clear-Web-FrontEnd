@@ -6,8 +6,10 @@ function App() {
   return (
     <>
 
-      <ProductCard />
-      <UserData />
+      <ProductCard name="laptop" price='RS 78000' />
+      <ProductCard name="phone" price='RS 119000' />
+
+
     </>
   )
 }
