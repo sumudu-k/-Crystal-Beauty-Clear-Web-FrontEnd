@@ -1,0 +1,37 @@
+.background{
+    background-color: #fff383;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 5px;
+    width: 500px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+
+}
+
+.button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 50px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+span{
+    font-size: 60px;
+    color: #000000;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+
