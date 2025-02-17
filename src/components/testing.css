@@ -1,4 +1,5 @@
 .background{
+    position:relative;
     background-color: #fff383;
     padding: 10px;
     border: 1px solid #ccc;
@@ -13,7 +14,7 @@
 
 }
 
-button{
+.val{
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -32,6 +33,32 @@ span{
     color: #000000;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+
+h1{
+    top:0;
+    position: absolute;
+}
+
+.button-panel{
+    position: absolute;
+    bottom: 0;
+
+}
+
+.button-panel button{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
 
