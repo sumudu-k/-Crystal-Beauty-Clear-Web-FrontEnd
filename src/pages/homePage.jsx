@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     return (
@@ -35,7 +36,9 @@ const HomePage = () => {
                             <textarea name="message"></textarea>
                         </label>
                         <button type="submit">Submit</button>
+                        <Link to="/login">Login</Link>
                     </form>
+
                 </section>
             </main>
             <footer className="footer">
@@ -112,7 +115,6 @@ const HomePage = () => {
     background-color: #f8f9fa;
     text-align: center;
     padding: 10px;
-    position: fixed;
     width: 100%;
     bottom: 0;
 }
