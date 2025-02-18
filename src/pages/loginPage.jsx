@@ -1,4 +1,5 @@
 import React from 'react';
+import './loginPage.css';
 
 export default function LoginPage() {
     return (
@@ -15,50 +16,6 @@ export default function LoginPage() {
                 </div>
                 <button type="submit">Login</button>
             </form>
-            <style jsx>{`
-                div {
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-
-                h2 {
-                    margin-bottom: 20px;
-                }
-
-                form {
-                    display: flex;
-                    flex-direction: column;
-                    width: 300px;
-                }
-
-                div > div {
-                    margin-bottom: 15px;
-                }
-
-                label {
-                    margin-bottom: 5px;
-                }
-
-                input {
-                    padding: 10px;
-                    font-size: 16px;
-                }
-
-                button {
-                    padding: 10px;
-                    font-size: 16px;
-                    background-color: #007BFF;
-                    color: white;
-                    border: none;
-                    cursor: pointer;
-                }
-
-                button:hover {
-                    background-color: #0056b3;
-                }
-            `}</style>
-
         </div>
     )
 }
