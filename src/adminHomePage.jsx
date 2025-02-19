@@ -2,6 +2,7 @@ import react from 'react';
 import { Link } from 'react-router-dom';
 import { MdDashboardCustomize } from "react-icons/md";
 import { FaUserFriends, FaBoxOpen, FaCartPlus } from "react-icons/fa";
+import { Routes, Route } from 'react-router-dom';
 
 export default function AdminHomePage() {
     return (
@@ -17,7 +18,22 @@ export default function AdminHomePage() {
                 <Link to='/admin/customers' className='flex flex-row items-center mb-4 hover:text-amber-300'> <FaUserFriends className='mr-2' />Customers</Link>
             </div>
 
-            <div className='w-[80%] h-screen bg-green-600'></div>
+            <div className='w-[80%] h-screen bg-green-600'>
+                <Routes path='/*'>
+                    <Route path='/dashboard' element={<h1>Dashboard</h1>} />
+
+                    <Route path='/products' element={<h1>Products</h1>} />
+
+                    <Route path='/orders' element={<h1>Orders</h1>} />
+
+                    <Route path='/customers' element={<h1>Customers</h1>} />
+
+                    <Route path='/*' element={<h1>Error 404 Page not Found</h1>} />
+
+                </Routes>
+
+
+            </div>
         </div>
     )
 }
