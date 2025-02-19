@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function LoginPage() {
 
@@ -7,7 +8,14 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
 
     function login() {
-        console.log(email, password);
+        axios.post('http://localhost:5000/api/users/login',
+            {
+                email: email,
+                password: password
+            }
+        ).then((res) => {
+            console.log(res);
+        })
     }
 
 
