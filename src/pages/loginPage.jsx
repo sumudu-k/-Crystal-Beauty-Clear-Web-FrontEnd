@@ -15,6 +15,7 @@ export default function LoginPage() {
         ).then((res) => {
 
             if (res.data.user == null) {
+                alert(res.data.message);
                 return;
             }
 
