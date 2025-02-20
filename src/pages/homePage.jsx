@@ -35,7 +35,7 @@ const HomePage = () => {
                             Message:
                             <textarea name="message"></textarea>
                         </label>
-                        <button type="submit">Submit</button>
+                        <button type="submit" className="bg-red-400 p-3">Submit</button>
                         <Link to="/login">Login</Link>
                     </form>
 

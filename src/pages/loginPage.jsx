@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-
 export default function LoginPage() {
 
     const [email, setEmail] = useState("Your Email");
@@ -15,6 +14,15 @@ export default function LoginPage() {
             }
         ).then((res) => {
             console.log(res);
+
+            //save user's token in local storage(browser memory)
+            localStorage.setItem("token", res.data.token);
+            if (res.data.user.type == "admim") {
+                window.location.href = "/admin";
+            } else {
+                window.location.href = "/"
+            }
+
         })
     }
 
