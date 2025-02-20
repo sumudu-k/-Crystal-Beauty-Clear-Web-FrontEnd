@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-hot-toast';
 export default function LoginPage() {
 
     const [email, setEmail] = useState("Your Email");
@@ -15,17 +16,19 @@ export default function LoginPage() {
         ).then((res) => {
 
             if (res.data.user == null) {
-                alert(res.data.message);
+                toast.error(res.data.message);
                 return;
             }
 
 
             //save user's token in local storage(browser memory)
             localStorage.setItem("token", res.data.token);
-            if (res.data.user.type == "admim") {
+            if (res.data.user.type == "admin") {
+                toast.success("Welcome Admin");
                 window.location.href = "/admin";
             } else {
-                window.location.href = "/"
+                window.location.href = "/";
+                toast.success("Welcome to Home Page");
             }
 
         })
