@@ -13,7 +13,11 @@ export default function LoginPage() {
                 password: password
             }
         ).then((res) => {
-            console.log(res);
+
+            if (res.data.user == null) {
+                return;
+            }
+
 
             //save user's token in local storage(browser memory)
             localStorage.setItem("token", res.data.token);
