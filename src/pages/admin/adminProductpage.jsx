@@ -61,23 +61,21 @@ export default function AdminProductPage() {
         ]
     );
 
-
     axios.get('http://localhost:5000/api/products').then((res) => {
         //console.log(res);
     })
-
-
     return (
         <div>
             <h1>Admin Product Page</h1>
             {
                 //loop through the products array and display each product
-                products.map((product) => {
-                    console.log(product)
+                products.map((product, index) => {
+                    return (
+                        <div key={index}> {product.productName} </div>
+                    )
+
                 })
             }
-
-
         </div>
     )
 }
