@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState } from 'react';
 export default function AdminProductPage() {
 
-    const [product, setProduct] = useState(
+    const [products, setProducts] = useState(
         [
             {
                 "_id": "67ac78d2aefb8f3035aa0022",
@@ -60,17 +60,24 @@ export default function AdminProductPage() {
             }
         ]
     );
-    console.log(product);
 
 
     axios.get('http://localhost:5000/api/products').then((res) => {
-        console.log(res);
+        //console.log(res);
     })
 
 
     return (
         <div>
             <h1>Admin Product Page</h1>
+            {
+                //loop through the products array and display each product
+                products.map((product) => {
+                    console.log(product)
+                })
+            }
+
+
         </div>
     )
 }
