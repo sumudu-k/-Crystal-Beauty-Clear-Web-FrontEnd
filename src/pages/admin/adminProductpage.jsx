@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { FaPencil, FaTrash } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
 export default function AdminProductPage() {
     const [products, setProducts] = useState([]);
@@ -14,7 +15,9 @@ export default function AdminProductPage() {
     }, []);
 
     return (
-        <div className="p-6 bg-gray-100 min-h-screen">
+        <div className="p-6 bg-gray-100 min-h-screen relative">
+            {/* <button className="absolute right-[50px] bottom-[50px] text-[45px]  bg-green-600 rounded-full " >+</button> */}
+            <Link to='admin/products/addProduct' className="absolute right-[50px] bottom-[50px] text-[40px] bg-green-600 rounded-xl w-16 h-16 flex items-center justify-center text-white shadow-lg hover:bg-green-700 transition" >+</Link>
             <h1 className="text-3xl font-semibold text-gray-800 mb-6 text-center">Admin Product Page</h1>
             <div className="overflow-x-auto">
                 <table className="w-full bg-white shadow-lg rounded-lg overflow-hidden">
