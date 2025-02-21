@@ -1,6 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 
 export default function AddProductForm() {
+    const [productId, setProductId] = useState('');
+    const [productName, setProductName] = useState('');
+    const [alternativeNames, setAlternativeNames] = useState('');
+    const [imageUrl, setImageUrl] = useState('');
+    const [price, setPrice] = useState('');
+    const [lastPrice, setLastPrice] = useState('');
+    const [stock, setStock] = useState('');
+    const [description, setDescription] = useState('');
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-200 ">
             <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md mt-10 mb-10 ">
