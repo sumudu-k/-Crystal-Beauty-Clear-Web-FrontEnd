@@ -1,5 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-hot-toast';
 
 export default function AddProductForm() {
     const [productId, setProductId] = useState('');
@@ -11,18 +13,34 @@ export default function AddProductForm() {
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
 
-    function handleSubmit(event) {
-        event.preventDefault(); // Prevents form from reloading the page
-        console.log({
-            productId,
-            productName,
-            alternativeNames,
-            imageUrl,
-            price,
-            lastPrice,
-            stock,
-            description
-        });
+    async function handleSubmit(event) {
+        //prevent page refresh
+        event.preventDefault();
+        const altNames = alternativeNames.split(','); //output is an array
+        const imgUrls = imageUrl.split(','); //output is an array
+        const product = {
+            productId: productId,
+            productName: productName,
+            altNames: altNames,
+            images: imgUrls,
+            price: price,
+            lastPrice: lastPrice,
+            stock: stock,
+            description: description
+        }
+
+        const token = localStorage.getItem("token")
+
+        try {
+            await axios.post('http://localhost:5000/api/products', product, {
+                headers: {
+                    Authorization: "Bearer " + token
+                }
+            })
+            toast.success("Product added successfully")
+        } catch (e) {
+            toast.error("Failed to add product")
+        }
     }
 
     return (
