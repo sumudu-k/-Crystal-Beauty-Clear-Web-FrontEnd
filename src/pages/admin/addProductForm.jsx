@@ -22,6 +22,8 @@ export default function AddProductForm() {
                             type="text"
                             placeholder="Enter product ID"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={productId}
+                            onChange={(e) => setProductId(e.target.value)}
                         />
                     </div>
                     <div>
@@ -30,6 +32,8 @@ export default function AddProductForm() {
                             type="text"
                             placeholder="Enter product name"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={productName}
+                            onChange={(e) => setProductName(e.target.value)}
                         />
                     </div>
                     <div>
@@ -38,6 +42,8 @@ export default function AddProductForm() {
                             type="text"
                             placeholder="Enter alternative names"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={alternativeNames}
+                            onChange={(e) => setAlternativeNames(e.target.value)}
                         />
                     </div>
                     <div>
@@ -46,6 +52,8 @@ export default function AddProductForm() {
                             type="text"
                             placeholder="Enter image URL"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={imageUrl}
+                            onChange={(e) => setImageUrl(e.target.value)}
                         />
                     </div>
                     <div>
@@ -54,6 +62,8 @@ export default function AddProductForm() {
                             type="number"
                             placeholder="Enter price"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={price}
+                            onChange={(e) => setPrice(e.target.value)}
                         />
                     </div>
                     <div>
@@ -62,6 +72,8 @@ export default function AddProductForm() {
                             type="number"
                             placeholder="Enter last price"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={lastPrice}
+                            onChange={(e) => setLastPrice(e.target.value)}
                         />
                     </div>
                     <div>
@@ -70,6 +82,8 @@ export default function AddProductForm() {
                             type="number"
                             placeholder="Enter stock quantity"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            value={stock}
+                            onChange={(e) => setStock(e.target.value)}
                         />
                     </div>
                     <div>
@@ -78,6 +92,8 @@ export default function AddProductForm() {
                             placeholder="Enter product description"
                             className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
                             rows="4"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                         ></textarea>
                     </div>
                     <div className="text-center">
