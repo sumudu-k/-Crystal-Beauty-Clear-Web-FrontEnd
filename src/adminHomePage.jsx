@@ -8,7 +8,7 @@ import AdminProductPage from './pages/admin/adminProductpage';
 export default function AdminHomePage() {
     return (
         <div className='bg-blue-400 w-full h-screen flex' >
-            <div className='w-[60%] h-screen bg-blue-700 flex flex-col items-center text-white' >
+            <div className='w-[20%] h-screen bg-blue-700 flex flex-col items-center text-white' >
 
                 <Link to='/admin/dashboard' className='flex flex-row items-center mb-4 mt-4  hover:text-amber-300'><MdDashboardCustomize className='mr-2' /> Dashboard</Link>
 
