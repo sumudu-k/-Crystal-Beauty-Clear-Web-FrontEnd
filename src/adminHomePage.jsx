@@ -4,6 +4,7 @@ import { MdDashboardCustomize } from "react-icons/md";
 import { FaUserFriends, FaBoxOpen, FaCartPlus } from "react-icons/fa";
 import { Routes, Route } from 'react-router-dom';
 import AdminProductPage from './pages/admin/adminProductpage';
+import AddProductForm from './pages/admin/addProductForm';
 
 export default function AdminHomePage() {
     return (
@@ -25,7 +26,7 @@ export default function AdminHomePage() {
 
                     <Route path='/products' element={<AdminProductPage />} />
 
-                    <Route path='/products/addProduct' element={<h1>Add product</h1>} />
+                    <Route path='/products/addProduct' element={<AddProductForm />} />
 
                     <Route path='/orders' element={<h1>Orders</h1>} />
 
