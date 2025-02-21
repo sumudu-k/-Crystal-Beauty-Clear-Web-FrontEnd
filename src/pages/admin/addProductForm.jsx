@@ -11,6 +11,20 @@ export default function AddProductForm() {
     const [stock, setStock] = useState('');
     const [description, setDescription] = useState('');
 
+    function handleSubmit(event) {
+        event.preventDefault(); // Prevents form from reloading the page
+        console.log({
+            productId,
+            productName,
+            alternativeNames,
+            imageUrl,
+            price,
+            lastPrice,
+            stock,
+            description
+        });
+    }
+
     return (
         <div className="flex items-center justify-center min-h-screen bg-gray-200 ">
             <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md mt-10 mb-10 ">
@@ -100,6 +114,7 @@ export default function AddProductForm() {
                         <button
                             type="submit"
                             className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            onClick={handleSubmit}
                         >
                             Add Product
                         </button>
