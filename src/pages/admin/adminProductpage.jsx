@@ -2,17 +2,27 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { FaPencil, FaTrash } from 'react-icons/fa6';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 export default function AdminProductPage() {
     const [products, setProducts] = useState([]);
 
+    // when delete icon pressed, the product will be deleted and refresh the page
+    const [productsLoaded, setProductsLoaded] = useState(false);
+
+
+
     useEffect(() => {
-        axios.get('http://localhost:5000/api/products')
-            .then((res) => {
-                setProducts(res.data);
-            })
-            .catch((err) => console.error(err));
-    }, []);
+        if (!productsLoaded) {
+            axios.get('http://localhost:5000/api/products')
+                .then((res) => {
+                    setProducts(res.data);
+                    setProductsLoaded(true);
+                })
+                .catch((err) => console.error(err));
+        }
+
+    }, [productsLoaded]);
 
     return (
         <div className="p-6 bg-gray-100 min-h-screen relative">
@@ -45,7 +55,22 @@ export default function AdminProductPage() {
                                     <button className="text-blue-500 hover:text-blue-700 transition">
                                         <FaPencil />
                                     </button>
-                                    <button className="text-red-500 hover:text-red-700 transition">
+
+                                    <button className="text-red-500 hover:text-red-700 transition"
+                                        onClick={() => {
+                                            const token = localStorage.getItem("token");
+
+
+                                            axios.delete(`http://localhost:5000/api/products/${product.productId}`, {
+                                                headers: {
+                                                    Authorization: "Bearer " + token
+                                                }
+                                            }).then(() => {
+                                                toast.success("Product deleted successfully");
+                                                setProductsLoaded(false);
+                                            })
+                                        }}
+                                    >
                                         <FaTrash />
                                     </button>
                                 </td>
