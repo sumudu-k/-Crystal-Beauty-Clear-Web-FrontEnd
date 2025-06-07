@@ -8,30 +8,27 @@ const url = "https://udaulbhdeheocmduvmtn.supabase.co";
 export default function FileUploadTest() {
   const [file, setFile] = useState(null);
 
-  function handleUpload() {
+  async function handleUpload() {
     if (file == null) {
       alert("Please select a file to upload");
       return;
     }
     console.log(file);
 
-    const fileName = file.name;
+    let fileName = file.name;
     const extension = fileName.split(".").pop();
     console.log(extension);
 
     const supabase = createClient(url, key);
 
-    supabase.storage
-      .from("images")
-      .upload(file.name, file, {
-        cacheControl: "3600",
-        upsert: false,
-      })
-      .then((res) => {
-        console.log(res);
-      });
+    const timestamp = new Date().getTime();
+    fileName = timestamp + "." + extension;
 
-    const publicUrl = supabase.storage.from("images").getPublicUrl(file.name);
+    await supabase.storage.from("images").upload(fileName, file, {
+      cacheControl: "3600",
+      upsert: false,
+    });
+    const publicUrl = supabase.storage.from("images").getPublicUrl(fileName);
     console.log(publicUrl);
   }
   return (
