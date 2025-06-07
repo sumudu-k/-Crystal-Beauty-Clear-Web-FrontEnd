@@ -1,14 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
 import ProductCard from "./components/productCard";
-import Testing from "./components/testing";
 import UserData from "./components/UserData";
 import HomePage from "./pages/homePage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
 import AdminHomePage from "./adminHomePage";
 import { Toaster } from "react-hot-toast";
-import FileUploadTest from "./pages/test";
 
 function App() {
   return (
@@ -21,7 +19,6 @@ function App() {
           <Route path="/signup" element={<SignupPage />} />
           {/* <Route path="/*" element={<h1>ERROR 404 PAGE NOT FOUND</h1>} /> */}
           <Route path="/admin/*" element={<AdminHomePage />} />
-          <Route path="/test" element={<FileUploadTest />} />
         </Routes>
       </BrowserRouter>
     </>
