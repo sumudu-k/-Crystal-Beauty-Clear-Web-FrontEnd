@@ -30,6 +30,9 @@ export default function FileUploadTest() {
       .then((res) => {
         console.log(res);
       });
+
+    const publicUrl = supabase.storage.from("images").getPublicUrl(file.name);
+    console.log(publicUrl);
   }
   return (
     <div>
