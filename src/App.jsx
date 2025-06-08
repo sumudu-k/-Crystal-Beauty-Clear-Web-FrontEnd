@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import ProductCard from "./components/productCard";
-import UserData from "./components/UserData";
+
 import HomePage from "./pages/homePage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
