@@ -29,6 +29,9 @@ export default function AddProductForm() {
       console.log(promisesArray);
     }
 
+    const imgUrls = await Promise.all(promisesArray);
+    console.log(imgUrls);
+
     const product = {
       productId: productId,
       productName: productName,
