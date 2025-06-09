@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { FaPencil, FaTrash } from "react-icons/fa6";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 export default function AdminProductPage() {
   const [products, setProducts] = useState([]);
 
+  const navigate = useNavigate();
   // when delete icon pressed, the product will be deleted and refresh the page
   const [productsLoaded, setProductsLoaded] = useState(false);
 
@@ -59,7 +60,13 @@ export default function AdminProductPage() {
                     {product.description}
                   </td>
                   <td className="py-4 px-6 flex justify-center space-x-4">
-                    <button className="text-blue-500 hover:text-blue-700 transition">
+                    <button
+                      className="text-blue-500 hover:text-blue-700 transition"
+                      onClick={() => {
+                        navigate("/admin/products/editProduct", {
+                          state: { product: product },
+                        });
+                      }}>
                       <FaPencil />
                     </button>
 
