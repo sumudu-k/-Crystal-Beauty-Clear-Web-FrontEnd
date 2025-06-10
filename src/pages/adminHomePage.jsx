@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { FaUserFriends, FaBoxOpen, FaCartPlus } from "react-icons/fa";
 import { Routes, Route } from "react-router-dom";
-import AdminProductPage from "./pages/admin/adminProductpage";
-import AddProductForm from "./pages/admin/addProductForm";
-import EditProductForm from "./pages/admin/editProductForm";
+import AdminProductPage from "./admin/adminProductPage";
+import AddProductForm from "./admin/addProductForm";
+import EditProductForm from "./admin/editProductForm";
 
 export default function AdminHomePage() {
   return (

@@ -4,7 +4,7 @@ import "./App.css";
 import HomePage from "./pages/homePage";
 import LoginPage from "./pages/loginPage";
 import SignupPage from "./pages/signupPage";
-import AdminHomePage from "./adminHomePage";
+import AdminHomePage from "./pages/adminHomePage";
 import { Toaster } from "react-hot-toast";
 
 function App() {
