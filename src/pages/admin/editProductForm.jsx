@@ -9,6 +9,12 @@ export default function EditProductForm() {
   const location = useLocation();
   const product = location.state.product;
   const altNames = product.altNames.join(", "); // Convert array to comma-separated string
+  const navigate = useNavigate();
+
+  if (product == null) {
+    navigate("/admin/products");
+    toast.error("Product not found");
+  }
 
   const [productId, setProductId] = useState(product.productId);
   const [productName, setProductName] = useState(product.productName);
@@ -19,24 +25,22 @@ export default function EditProductForm() {
   const [stock, setStock] = useState(product.stock);
   const [description, setDescription] = useState(product.description);
 
-  const navigate = useNavigate();
-
   async function handleSubmit(event) {
     //prevent page refresh
     event.preventDefault();
     const altNames = alternativeNames.split(","); //output is an array
 
     const promisesArray = [];
+    let imgUrls = product.images;
 
-    for (let i = 0; i < imageFiles.length; i++) {
-      promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
-      console.log(promisesArray);
+    if (imageFiles.length > 0) {
+      for (let i = 0; i < imageFiles.length; i++) {
+        promisesArray[i] = uploadMediaToSupabase(imageFiles[i]);
+      }
+      imgUrls = await Promise.all(promisesArray);
     }
 
-    const imgUrls = await Promise.all(promisesArray);
-    console.log(imgUrls);
-
-    const product = {
+    const productData = {
       productId: productId,
       productName: productName,
       altNames: altNames,
@@ -50,15 +54,19 @@ export default function EditProductForm() {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.post("http://localhost:5000/api/products", product, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      });
-      toast.success("Product added successfully");
+      await axios.put(
+        "http://localhost:5000/api/products/" + product.productId,
+        productData,
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      );
+      toast.success("Product updated successfully");
       navigate("/admin/products");
     } catch (e) {
-      toast.error("Failed to add product");
+      toast.error("Failed to update product");
     }
   }
 
