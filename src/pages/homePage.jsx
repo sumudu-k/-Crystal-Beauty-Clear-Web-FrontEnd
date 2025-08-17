@@ -8,9 +8,9 @@ export default function HomePage() {
   return (
     <div className="h-screen w-full">
       <Header />
-      <div className="w-full h-[calc(100vh-80px)] bg-red-800">
+      <div className="w-full h-[calc(100vh-80px)]">
         <Routes path="/*">
-          <Route path="/productinfo" element={<ProductOverview />} />
+          <Route path="/productinfo/:id" element={<ProductOverview />} />
         </Routes>
       </div>
     </div>
