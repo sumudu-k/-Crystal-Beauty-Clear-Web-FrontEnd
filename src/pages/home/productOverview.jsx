@@ -53,14 +53,25 @@ export default function ProductOverview() {
             />
           </div>
           <div className="w-[60%] h-full p-4">
-            <h1 className="text-red-700 text-3xl font-bold">
+            <h1 className="text-gray-900 text-3xl font-bold">
               {product.productName}
             </h1>
 
-            <h1 className="text-red-500 text-3xl font-bold">
+            <h1 className="text-gray-600 text-3xl font-bold">
               {product.altNames.join(" |")}
             </h1>
-            <p className="font-bold">${product.price}</p>
+
+            <p>
+              {product.lastPrice < product.price && (
+                <span className="line-through text-gray-700">
+                  Rs {product.price}
+                </span>
+              )}
+            </p>
+            <p className="text-black font-bold text-2xl">
+              Rs {product.lastPrice}
+            </p>
+
             <h1>{product.description}</h1>
           </div>
         </div>
