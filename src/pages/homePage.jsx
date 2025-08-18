@@ -3,6 +3,8 @@ import { Link, Route } from "react-router-dom";
 import { Routes } from "react-router-dom";
 import Header from "../components/header";
 import ProductOverview from "./home/productOverview";
+import LoginPage from "./loginPage";
+import ProductPage from "./home/product";
 
 export default function HomePage() {
   return (
@@ -10,6 +12,9 @@ export default function HomePage() {
       <Header />
       <div className="w-full h-[calc(100vh-80px)]">
         <Routes path="/*">
+          <Route path="/" element={<h1>Homepage</h1>} />
+          <Route path="/login" element={<LoginPage></LoginPage>} />
+          <Route path="/products" element={<ProductPage />} />
           <Route path="/productinfo/:id" element={<ProductOverview />} />
         </Routes>
       </div>
