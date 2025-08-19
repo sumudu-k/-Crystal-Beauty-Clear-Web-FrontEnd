@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import ProductCard from "../../components/productCard";
 
 export default function ProductPage() {
   const [products, setProducts] = useState([]);
@@ -22,15 +23,9 @@ export default function ProductPage() {
   }, []);
 
   return (
-    <div>
+    <div className="w-full h-full overflow-y-scroll flex flex-wrap justify-center">
       {products.map((product) => (
-        <div key={product.id}>
-          <p>{product.productName}</p>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
-          <p>{product.lastPrice}</p>
-          <img src={product.images[0]} alt="image" />
-        </div>
+        <ProductCard product={product} />
       ))}
     </div>
   );
