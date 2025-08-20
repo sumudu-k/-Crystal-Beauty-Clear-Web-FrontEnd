@@ -16,7 +16,9 @@ const cart=loadCart()
 // check if the product Id is equal to the local storage stored items' product id
 // if it couldnot able to find the product `index` variable value gets -1 value
 const index=cart.findIndex((item)=>
-    {item.productId==productId}
+    {
+        return item.productId==productId
+    }
 )
 // if -1 , add productid and quntity to the end of the array
 if(index==-1){
@@ -37,6 +39,8 @@ export function saveCart(cart){
     localStorage.setItem("cart", JSON.stringify(cart) )
 }
 
-
+export function clearCart(cart){
+    localStorage.removeItem("cart")
+}
 
 
