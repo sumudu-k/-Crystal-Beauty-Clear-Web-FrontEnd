@@ -43,4 +43,17 @@ export function clearCart(cart){
     localStorage.removeItem("cart")
 }
 
-
+export function deleteItem(productId){
+    const cart=loadCart()
+    const index=cart.findIndex(
+        (item)=>{
+            return item.productId==productId
+        }
+    )
+    // if index!=-1 means that product already exist in the cart
+    if(index!=-1){
+        // remove item from the cart
+        //             (start,delete count)
+            cart.splice(index,1)
+        }
+}
