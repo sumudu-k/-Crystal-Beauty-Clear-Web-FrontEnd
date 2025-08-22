@@ -28,7 +28,7 @@ export default function CartCard(props) {
   }, []);
 
   return (
-    <tr className="hover:bg-gray-200 ">
+    <tr className="hover:bg-yellow-600 hover:text-white ">
       {/* this is a cart card. this fetch only one product details. so, no need to use map() function */}
       <td className="">
         <img
