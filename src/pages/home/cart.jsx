@@ -23,7 +23,32 @@ export default function Cart() {
       });
   }, []);
 
-  function onOrderCheckoutClick() {}
+  function onOrderCheckoutClick() {
+    const token = localStorage.getItem("token");
+
+    if (token == null) {
+      return;
+    }
+
+    axios
+      .post(
+        "http://localhost:5000/api/orders",
+        {
+          orderedItems: cart,
+          phone: "0764455658",
+          address: "karandeniya",
+          name: "slk sumudu",
+        },
+        {
+          headers: {
+            Authorization: "Bearer " + token,
+          },
+        }
+      )
+      .then((res) => {
+        console.log(res.data);
+      });
+  }
 
   return (
     <div className="w-full h-full overflow-y-scroll relative">
@@ -57,7 +82,9 @@ export default function Cart() {
         <p>Grand Total:{total.toFixed(2)} </p>
       </div>
 
-      <button className="bg-yellow-600 hover:bg-yellow-700 px-5 py-1 font-bold rounded text-white absolute right-0 mr-3 mt-3">
+      <button
+        onClick={onOrderCheckoutClick}
+        className="bg-yellow-600 hover:bg-yellow-700 px-5 py-1 font-bold rounded text-white absolute right-0 mr-3 mt-3">
         Checkout
       </button>
     </div>

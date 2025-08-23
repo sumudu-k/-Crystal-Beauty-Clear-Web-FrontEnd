@@ -32,6 +32,12 @@ export default function Header() {
           className="text-white font-bold  text-[20px] hover:border-b border-b-white">
           Contact Us
         </Link>
+
+        <Link
+          to="/cart"
+          className="text-white font-bold  text-[20px] hover:border-b border-b-white">
+          My Cart
+        </Link>
       </div>
     </header>
   );
