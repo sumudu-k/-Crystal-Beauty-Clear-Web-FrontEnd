@@ -52,16 +52,23 @@ export default function ProductOverview() {
       }
       {status == "notfound" && <ProductNotFound />}
       {status == "found" && (
-        <div className="w-full h-full flex items-center justify-center">
-          <div className="w-[35%] h-full">
+        <div className="w-full h-full flex lg:items-center justify-center flex-col lg:flex-row ">
+          <h1 className="text-gray-900 text-2xl font-bold lg:hidden">
+            {product.productName}
+          </h1>
+
+          <h1 className="text-gray-600 text-1xl font-bold lg:hidden ">
+            {product.altNames.join(" |")}
+          </h1>
+
+          <div className="w-[95%] lg:w-[35%] h-full bg-blue-500 ">
             <ImageSlider images={product.images} />
           </div>
-          <div className="w-[60%] h-full p-4">
-            <h1 className="text-gray-900 text-2xl font-bold">
+          <div className="w-full lg:w-[60%] h-full p-4">
+            <h1 className="text-gray-900 text-2xl font-bold hidden lg:block ">
               {product.productName}
             </h1>
-
-            <h1 className="text-gray-600 text-2xl font-bold">
+            <h1 className="text-gray-600 text-2xl font-bold hidden lg:block ">
               {product.altNames.join(" |")}
             </h1>
 
