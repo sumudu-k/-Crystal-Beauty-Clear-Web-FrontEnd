@@ -55,5 +55,6 @@ export function deleteItem(productId){
         // remove item from the cart
         //             (start,delete count)
             cart.splice(index,1)
+            saveCart(cart)
         }
 }
