@@ -1,35 +1,31 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { useGoogleLogin } from "@react-oauth/google";
-import { Link } from "react-router-dom";
 
-export default function LoginPage() {
+export default function AdminRegister() {
+  const navigate = useNavigate();
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [loading, setLoading] = useState(false);
+  const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
 
-  // ✅ Google Login
   const googleLogin = useGoogleLogin({
     onSuccess: (res) => {
       axios
-        .post(
-          `${
-            import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
-          }/api/users/google`,
-          {
-            token: res.access_token,
-          }
-        )
+        .post(`${API_BASE}/api/users/google`, {
+          token: res.access_token,
+        })
         .then((res) => {
           if (!res.data.user) {
             toast.error(res.data.message || "Google login failed");
             return;
           }
-
-          // Save token
           localStorage.setItem("token", res.data.token);
-
-          // Redirect based on type
           if (res.data.user.type === "admin") {
             toast.success("Welcome Admin");
             window.location.href = "/admin";
@@ -47,54 +43,89 @@ export default function LoginPage() {
     },
   });
 
-  // ✅ Email/Password Login
-  function login() {
-    axios
-      .post(import.meta.env.VITE_BACKEND_URL + "/api/users/login", {
-        email: email,
-        password: password,
-      })
-      .then((res) => {
-        if (!res.data.user) {
-          toast.error(res.data.message || "Login failed");
-          return;
+  async function onSubmit(e) {
+    e.preventDefault();
+    if (!firstName || !lastName || !email || !password || !confirmPassword) {
+      toast.error("Please fill in all fields");
+      return;
+    }
+    if (password.length < 6) {
+      toast.error("Password must be at least 6 characters");
+      return;
+    }
+    if (password !== confirmPassword) {
+      toast.error("Passwords do not match");
+      return;
+    }
+    try {
+      setLoading(true);
+      const token = localStorage.getItem("token");
+      const res = await axios.post(
+        `${API_BASE}/api/users`,
+        {
+          email,
+          firstName,
+          lastName,
+          password,
+          type: "admin",
+        },
+        {
+          headers: token ? { Authorization: `Bearer ${token}` } : {},
         }
-
-        // Save token
-        localStorage.setItem("token", res.data.token);
-
-        // Redirect based on type
-        if (res.data.user.type === "admin") {
-          toast.success("Welcome Admin");
-          window.location.href = "/admin";
-        } else {
-          toast.success("Welcome to Home Page");
-          window.location.href = "/";
-        }
-      })
-      .catch(() => {
-        toast.error("Login request failed");
-      });
+      );
+      const msg = res?.data?.message || "";
+      if (msg.toLowerCase().includes("created")) {
+        toast.success("Admin account created");
+        navigate("/admin/dashboard");
+      } else {
+        toast.error(msg || "Admin signup failed");
+      }
+    } catch (e) {
+      toast.error(e?.response?.data?.message || "Admin signup failed");
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-primary to-white flex items-center justify-center px-4 py-10">
       <div className="w-full max-w-md rounded-2xl bg-white/80 ring-1 ring-black/5 shadow-xl p-6">
         <h2 className="text-2xl font-semibold text-pink-900 text-center">
-          Welcome back
+          Register an Admin
         </h2>
         <p className="text-center text-secondary text-sm">
-          Log in to your account
+          Only current admins can create new admin accounts.
         </p>
 
-        <div className="mt-6 space-y-4">
+        <form onSubmit={onSubmit} className="mt-6 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label className="block text-sm text-pink-900">First Name</label>
+              <input
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
+                placeholder="Jane"
+              />
+            </div>
+            <div>
+              <label className="block text-sm text-pink-900">Last Name</label>
+              <input
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
+                placeholder="Doe"
+              />
+            </div>
+          </div>
           <div>
             <label className="block text-sm text-pink-900">Email</label>
             <input
+              type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="you@example.com"
               className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
+              placeholder="admin@example.com"
             />
           </div>
           <div>
@@ -103,17 +134,29 @@ export default function LoginPage() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="••••••••"
               className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
+              placeholder="••••••••"
+            />
+          </div>
+          <div>
+            <label className="block text-sm text-pink-900">
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
+              placeholder="••••••••"
             />
           </div>
           <button
-            onClick={login}
-            className="w-full inline-flex items-center justify-center rounded-lg bg-accent/90 text-white font-medium px-5 py-2.5 shadow-sm hover:bg-accent transition-colors">
-            Login
+            type="submit"
+            disabled={loading}
+            className="w-full inline-flex items-center justify-center rounded-lg bg-accent/90 text-white font-medium px-5 py-2.5 shadow-sm hover:bg-accent transition-colors disabled:opacity-60 disabled:cursor-not-allowed">
+            {loading ? "Creating..." : "Create admin account"}
           </button>
-        </div>
-
+        </form>
         <div className="my-4 flex items-center gap-3 text-secondary text-sm">
           <div className="h-px flex-1 bg-pink-200" />
           <span>or</span>
@@ -147,13 +190,12 @@ export default function LoginPage() {
           </svg>
           Login with Google
         </button>
-
         <p className="mt-4 text-center text-sm text-secondary">
-          Don’t have an account? {""}
+          Back to{" "}
           <Link
-            to="/signup"
+            to="/admin/dashboard"
             className="text-pink-700 hover:text-pink-900 font-medium">
-            Create one
+            Dashboard
           </Link>
         </p>
       </div>

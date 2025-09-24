@@ -6,18 +6,29 @@ import ProductOverview from "./home/productOverview";
 import LoginPage from "./loginPage";
 import ProductPage from "./home/product";
 import Cart from "./home/cart";
+import HomeLanding from "./home/homeLanding";
+import SearchResults from "./home/searchResults";
+import AboutPage from "./aboutPage";
+import ContactPage from "./contactPage";
+import Checkout from "./home/checkout";
+import SignupPage from "./signupPage";
 
 export default function HomePage() {
   return (
-    <div className="h-screen w-full">
+    <div className="min-h-screen w-full bg-gradient-to-b from-primary to-white">
       <Header />
-      <div className="w-full h-[calc(100vh-80px)]">
+      <div className="w-full min-h-[calc(100vh-80px)]">
         <Routes path="/*">
-          <Route path="/" element={<h1>Homepage</h1>} />
+          <Route path="/" element={<HomeLanding />} />
+          <Route path="/search" element={<SearchResults />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
           <Route path="/login" element={<LoginPage></LoginPage>} />
           <Route path="/products" element={<ProductPage />} />
           <Route path="/productinfo/:id" element={<ProductOverview />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path="/signup" element={<SignupPage />} />
         </Routes>
       </div>
     </div>

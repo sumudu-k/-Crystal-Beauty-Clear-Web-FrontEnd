@@ -46,7 +46,8 @@ export default function AddProductForm() {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.post("http://localhost:5000/api/products", product, {
+      const base = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      await axios.post(`${base}/api/products`, product, {
         headers: {
           Authorization: "Bearer " + token,
         },
@@ -59,45 +60,49 @@ export default function AddProductForm() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-200 ">
-      <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md mt-10 mb-10 ">
-        <h1 className="text-2xl font-bold mb-6 text-center">Add New Product</h1>
-        <form className="space-y-4">
+    <div className="min-h-screen w-full bg-gradient-to-b from-primary to-white flex items-center justify-center px-4 py-10">
+      <div className="w-full max-w-xl rounded-2xl bg-white/80 ring-1 ring-black/5 shadow-xl p-6">
+        <h1 className="text-2xl font-semibold text-pink-900 text-center">
+          Add New Product
+        </h1>
+        <form className="mt-6 space-y-4">
           <div>
-            <label className="block text-gray-700">Product ID</label>
+            <label className="block text-sm text-pink-900">Product ID</label>
             <input
               type="text"
               placeholder="Enter product ID"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={productId}
               onChange={(e) => setProductId(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-gray-700">Product Name</label>
+            <label className="block text-sm text-pink-900">Product Name</label>
             <input
               type="text"
               placeholder="Enter product name"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={productName}
               onChange={(e) => setProductName(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-gray-700">Alternative Names</label>
+            <label className="block text-sm text-pink-900">
+              Alternative Names
+            </label>
             <input
               type="text"
               placeholder="Enter alternative names"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={alternativeNames}
               onChange={(e) => setAlternativeNames(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-gray-700">Image URL</label>
+            <label className="block text-sm text-pink-900">Images</label>
             <input
               type="file"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               onChange={(e) => {
                 setImageFiles(e.target.files);
               }}
@@ -105,40 +110,40 @@ export default function AddProductForm() {
             />
           </div>
           <div>
-            <label className="block text-gray-700">Price</label>
+            <label className="block text-sm text-pink-900">Price</label>
             <input
               type="number"
               placeholder="Enter price"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-gray-700">Last Price</label>
+            <label className="block text-sm text-pink-900">Last Price</label>
             <input
               type="number"
               placeholder="Enter last price"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={lastPrice}
               onChange={(e) => setLastPrice(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-gray-700">Stock</label>
+            <label className="block text-sm text-pink-900">Stock</label>
             <input
               type="number"
               placeholder="Enter stock quantity"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={stock}
               onChange={(e) => setStock(e.target.value)}
             />
           </div>
           <div>
-            <label className="block text-gray-700">Description</label>
+            <label className="block text-sm text-pink-900">Description</label>
             <textarea
               placeholder="Enter product description"
-              className="w-full mt-1 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               rows="4"
               value={description}
               onChange={(e) => setDescription(e.target.value)}></textarea>
@@ -146,7 +151,7 @@ export default function AddProductForm() {
           <div className="text-center">
             <button
               type="submit"
-              className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500"
+              className="w-full inline-flex items-center justify-center rounded-lg bg-accent/90 text-white font-medium px-5 py-2.5 shadow-sm hover:bg-accent transition-colors"
               onClick={handleSubmit}>
               Add Product
             </button>
