@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { MdDashboardCustomize } from "react-icons/md";
 import { FaUserFriends, FaBoxOpen, FaCartPlus } from "react-icons/fa";
 import { Routes, Route } from "react-router-dom";
-import AdminProductPage from "./admin/adminProductPage";
+import AdminProductPage from "./admin/adminProductpage";
 import AddProductForm from "./admin/addProductForm";
 import EditProductForm from "./admin/editProductForm";
 import AdminDashboard from "./admin/adminDashboard";
