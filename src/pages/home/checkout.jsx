@@ -48,7 +48,7 @@ export default function Checkout() {
     axios
       .post(
         `${
-          import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+          import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
         }/api/orders/quote`,
         { orderedItems: c }
       )
@@ -80,7 +80,7 @@ export default function Checkout() {
     axios
       .post(
         `${
-          import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+          import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
         }/api/orders`,
         { orderedItems: cart, name, address, phone, notes },
         { headers: { Authorization: "Bearer " + token } }

@@ -13,7 +13,7 @@ export default function AdminProductPage() {
 
   useEffect(() => {
     if (!productsLoaded) {
-      const base = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      const base = import.meta.env.VITE_BACKEND_URL || "http://localhost:5050";
       axios
         .get(`${base}/api/products`)
         .then((res) => {
@@ -146,7 +146,7 @@ export default function AdminProductPage() {
                 onClick={() => {
                   const token = localStorage.getItem("token");
                   const base =
-                    import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+                    import.meta.env.VITE_BACKEND_URL || "http://localhost:5050";
                   axios
                     .delete(
                       `${base}/api/products/${productToDelete.productId}`,

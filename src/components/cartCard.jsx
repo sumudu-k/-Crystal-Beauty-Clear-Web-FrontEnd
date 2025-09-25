@@ -11,7 +11,7 @@ export default function CartCard(props) {
 
   const [product, setProduct] = useState(null);
   const [loaded, setLoaded] = useState(false);
-  const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+  const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5050";
 
   useEffect(() => {
     if (!loaded) {

@@ -26,7 +26,7 @@ export default function Cart() {
     axios
       .post(
         `${
-          import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+          import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
         }/api/orders/quote`,
         {
           orderedItems: current,
@@ -60,7 +60,7 @@ export default function Cart() {
     axios
       .get(
         `${
-          import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+          import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
         }/api/orders`,
         {
           headers: { Authorization: "Bearer " + token },

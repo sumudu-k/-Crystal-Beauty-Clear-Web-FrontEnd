@@ -30,7 +30,7 @@ export default function ProductOverview() {
     axios
       .get(
         `${
-          import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+          import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
         }/api/products/${productId}`
       )
       .then((res) => {

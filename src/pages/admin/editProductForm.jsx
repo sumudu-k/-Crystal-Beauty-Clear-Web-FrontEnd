@@ -54,7 +54,7 @@ export default function EditProductForm() {
     const token = localStorage.getItem("token");
 
     try {
-      const base = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+      const base = import.meta.env.VITE_BACKEND_URL || "http://localhost:5050";
       await axios.put(
         `${base}/api/products/` + product.productId,
         productData,

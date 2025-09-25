@@ -17,7 +17,7 @@ export default function SignupPage() {
       axios
         .post(
           `${
-            import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+            import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
           }/api/users/google`,
           {
             token: res.access_token,
@@ -63,7 +63,7 @@ export default function SignupPage() {
     try {
       setLoading(true);
       const url =
-        (import.meta.env.VITE_BACKEND_URL || "http://localhost:5000") +
+        (import.meta.env.VITE_BACKEND_URL || "http://localhost:5050") +
         "/api/users";
       const res = await axios.post(url, {
         email,

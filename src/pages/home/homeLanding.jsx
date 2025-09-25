@@ -33,7 +33,7 @@ export default function HomeLanding() {
     axios
       .get(
         `${
-          import.meta.env.VITE_BACKEND_URL || "http://localhost:5000"
+          import.meta.env.VITE_BACKEND_URL || "http://localhost:5050"
         }/api/products`
       )
       .then((res) => {

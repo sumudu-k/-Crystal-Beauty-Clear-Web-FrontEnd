@@ -9,7 +9,7 @@ const Customers = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [message, setMessage] = useState("");
 
-  const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+  const API_BASE = import.meta.env.VITE_BACKEND_URL || "http://localhost:5050";
 
   useEffect(() => {
     fetchCustomers();
