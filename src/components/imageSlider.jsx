@@ -4,14 +4,13 @@ export default function ImageSlider(props) {
   const [activeImage, setActiveImage] = useState(0);
 
   return (
-    <div className="w-full flex items-center justify-center flex-col relative aspect-square ">
-      <img
-        src={images[activeImage]}
-        className="w-full aspect-square object-cover"
-      />
+    <div className="w-full flex items-center justify-center flex-col">
+      <div className="w-full aspect-square">
+        <img src={images[activeImage]} className="w-full h-full object-cover" />
+      </div>
 
-      <div className="absolute bottom-0 w-full h-[75px] backdrop-blur-md bg-white/30 flex items-center ">
-        <div className="flex items-center justify-start overflow-hidden w-full h-full">
+      <div className="w-full flex items-center justify-center mt-4">
+        <div className="flex items-center justify-start overflow-x-auto gap-2 p-2">
           {images.map((image, index) => (
             <img
               onClick={() => {
@@ -19,7 +18,7 @@ export default function ImageSlider(props) {
               }}
               key={index}
               src={image}
-              className="w-[72px] h-[72px] object-cover cursor-pointer m-2 rounded-md ring-1 ring-pink-200 hover:ring-pink-400"
+              className="w-16 h-16 object-cover cursor-pointer rounded-md ring-1 ring-pink-200 hover:ring-pink-400 flex-shrink-0"
             />
           ))}
         </div>

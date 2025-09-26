@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 import Aos from "aos";
 import "aos/dist/aos.css";
 import Newsletter from "./newsletter";
-
+import "@fontsource/sriracha";
 export default function ProductOverview() {
   useEffect(() => {
     Aos.init({
@@ -81,7 +81,7 @@ export default function ProductOverview() {
         <div className=" mb-20 mx-auto max-w-6xl grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Mobile title */}
           <div className="lg:hidden">
-            <h1 className="text-pink-900 text-2xl font-bold">
+            <h1 className=" sriracha-regular font-sans text-pink-900 text-2xl font-bold">
               {product.productName}
             </h1>
             <p className="text-secondary text-sm mt-1">
@@ -99,7 +99,7 @@ export default function ProductOverview() {
           {/* Details */}
           <div className="w-full h-full p-4 bg-white/80 rounded-2xl ring-1 ring-black/5 shadow-sm">
             {/* Desktop title */}
-            <h1 className="text-pink-900 text-3xl font-semibold hidden lg:block">
+            <h1 className=" sriracha-regular font-sans text-pink-900 text-3xl font-semibold hidden lg:block">
               {product.productName}
             </h1>
             <p className="text-secondary mt-1 hidden lg:block">

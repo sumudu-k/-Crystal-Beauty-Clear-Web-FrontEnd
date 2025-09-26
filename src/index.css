@@ -21,3 +21,16 @@
 }
 
 
+.marck-script-regular {
+	/* web name */
+  font-family: "Marck Script", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sriracha-regular {
+	/* product name */
+  font-family: "Sriracha", cursive;
+  font-weight: 400;
+  font-style: normal;
+}

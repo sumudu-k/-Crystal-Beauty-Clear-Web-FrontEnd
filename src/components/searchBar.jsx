@@ -20,17 +20,16 @@ export default function SearchBar({
     navigate(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
   }
 
-  const sizeClasses =
-    size === "lg"
-      ? "h-12 text-base px-4"
-      : size === "sm"
-      ? "h-9 text-sm px-3"
-      : "h-10 text-sm px-3";
+  // const sizeClasses =
+  //   size === "lg"
+  //     ? "h-12 text-base px-4"
+  //     : size === "sm"
+  //     ? "h-9 text-sm px-3"
+  //     : "h-10 text-sm px-3";
 
   return (
     <form onSubmit={onSubmit} className="w-full flex items-center gap-2">
-      <div
-        className={`flex-1 flex items-center rounded-lg border border-pink-200 bg-white/80 ${sizeClasses} focus-within:ring-2 focus-within:ring-pink-300`}>
+      <div className="flex-1 flex items-center rounded-lg border border-pink-200 bg-white/80 focus-within:ring-2 focus-within:ring-pink-300 h-10 ">
         <FiSearch className="mx-2 text-pink-700" />
         <input
           value={term}
@@ -41,7 +40,7 @@ export default function SearchBar({
       </div>
       <button
         type="submit"
-        className="inline-flex items-center justify-center rounded-lg bg-accent/90 text-white font-medium px-4 py-2 shadow-sm hover:bg-accent transition-colors">
+        className="inline-flex items-center justify-center rounded-lg bg-accent/90 text-white px-4 py-2 shadow-sm hover:bg-accent transition-colors">
         Search
       </button>
     </form>

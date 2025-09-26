@@ -15,7 +15,10 @@ import SignupPage from "./signupPage";
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen w-full bg-gradient-to-b from-primary to-white">
+    <div
+      className="min-h-screen w-full bg-gradient-to-b from-primary to-white 
+    overflow-x-hidden 
+    overflow-y-scroll">
       <Header />
       <div className="w-full min-h-[calc(100vh-80px)]">
         <Routes path="/*">

@@ -12,8 +12,8 @@ export default function ProductCard(props) {
               src={props.product.images[0]}
               alt={props.product.productName}
             />
-            <span className="inline-flex items-center rounded-full bg-accent/10 text-pink-700 px-2 py-0.5 text-xs font-medium absolute left-3 top-3">
-              #{props.product.productId}
+            <span className="inline-flex items-center rounded-full bg-pink-500/50 text-white px-2 py-0.5 text-xs font-medium absolute left-3 top-3">
+              {props.product.productId}
             </span>
           </div>
           <div className="p-4 flex-1 flex flex-col gap-2">
@@ -22,7 +22,7 @@ export default function ProductCard(props) {
             </p>
             <div className="flex items-baseline justify-center gap-2 mt-1">
               {props.product.lastPrice < props.product.price && (
-                <span className="text-gray-400 line-through text-sm">
+                <span className="text-red-400 line-through text-lg font-semibold">
                   Rs {props.product.price.toFixed(2)}
                 </span>
               )}

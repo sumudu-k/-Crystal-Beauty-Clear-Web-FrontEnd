@@ -5,6 +5,8 @@ import NavSlider from "./navSlider";
 import SearchBar from "./searchBar";
 import toast from "react-hot-toast";
 
+import "@fontsource/marck-script";
+
 export default function Header() {
   const [isSliderOpen, setIsSliderOpen] = useState(false);
   const navigate = useNavigate();
@@ -25,15 +27,13 @@ export default function Header() {
           }}
         />
       )}
-      <header className="w-full bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-pink-200">
+      <header className="w-full bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 border-b border-pink-200 overflow-x-hidden">
         {/* Top row */}
-        <div className="relative h-[90px] flex items-center justify-center">
+        <div className="relative h-[90px] flex items-center">
           <a href="/">
-            <img
-              src="../public/logocbc.png"
-              alt="logo"
-              className="h-[70%] rounded-full cursor-pointer absolute left-[20px] shadow-sm ring-1 ring-pink-200"
-            />
+            <h1 className="marck-script-regular font-sans text-3xl font-bold text-pink-700 ml-4 mr-5">
+              Crystal Beauty Clear
+            </h1>
           </a>
 
           <RxHamburgerMenu
@@ -95,9 +95,8 @@ export default function Header() {
             )}
           </div>
         </div>
-
         {/* Search row (always visible, including mobile) */}
-        <div className="px-4 pb-3">
+        <div className="px-4 pb-3  ">
           <div className="max-w-3xl mx-auto">
             <SearchBar size="lg" placeholder="Search products..." />
           </div>

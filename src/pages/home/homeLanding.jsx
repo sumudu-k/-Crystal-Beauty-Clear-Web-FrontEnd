@@ -25,6 +25,8 @@ import cover1 from "../../images/cover1.jpg";
 import cover2 from "../../images/cover2.jpeg";
 import cover3 from "../../images/cover3.jpg";
 
+import "@fontsource/marck-script";
+
 export default function HomeLanding() {
   const [products, setProducts] = useState([]);
   const [status, setStatus] = useState("loading"); // loading | loaded | error
@@ -60,7 +62,7 @@ export default function HomeLanding() {
         data-aos="fade-up"
         className="w-full h-[70vh] relative overflow-hidden">
         <div className="relative w-full h-full">
-          <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl sm:text-5xl md:text-6xl font-bold bg-black bg-opacity-40 px-4 pb-5 pt-2 rounded-lg z-10 text-center">
+          <h1 className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-4xl md:text-6xl font-bold bg-black bg-opacity-40 px-4 pb-5 pt-2 rounded-lg z-10 text-center">
             Embrace Your Natural Beauty
           </h1>
           <button className="absolute bottom-10 left-1/2 transform -translate-x-1/2 bg-pink-600 text-white px-6 py-3 rounded-lg shadow-lg hover:bg-pink-700 z-10 font-bold">
@@ -120,7 +122,7 @@ export default function HomeLanding() {
             data-aos="fade-up"
             className="z-50 rounded-3xl bg-gradient-to-br from-pink-200 via-primary to-white ring-1 ring-pink-200/60 shadow-sm p-6 sm:p-10 flex flex-col lg:flex-row items-center gap-6">
             <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-pink-900 text-3xl sm:text-4xl font-semibold leading-tight">
+              <h1 className="marck-script-regular font-sans text-pink-900 text-3xl sm:text-4xl font-semibold leading-tight">
                 Crystal Beauty Clear
               </h1>
               <p className="mt-2 text-secondary sm:text-lg">
