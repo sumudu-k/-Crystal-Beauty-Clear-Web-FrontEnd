@@ -20,7 +20,7 @@ export default function AddProductForm() {
   async function handleSubmit(event) {
     //prevent page refresh
     event.preventDefault();
-    const altNames = alternativeNames.split(","); //output is an array
+    const altNames = alternativeNames.split(",");
 
     const promisesArray = [];
 
@@ -106,7 +106,7 @@ export default function AddProductForm() {
               onChange={(e) => {
                 setImageFiles(e.target.files);
               }}
-              multiple // Allow multiple file uploads
+              multiple
             />
           </div>
           <div>

@@ -18,7 +18,6 @@ function App() {
             <Route path="/*" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignupPage />} />
-            {/* <Route path="/*" element={<h1>ERROR 404 PAGE NOT FOUND</h1>} /> */}
             <Route path="/admin/*" element={<AdminHomePage />} />
           </Routes>
         </GoogleOAuthProvider>

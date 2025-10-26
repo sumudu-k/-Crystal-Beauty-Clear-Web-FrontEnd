@@ -8,7 +8,6 @@ export default function AdminProductPage() {
   const [products, setProducts] = useState([]);
 
   const navigate = useNavigate();
-  // when delete icon pressed, the product will be deleted and refresh the page
   const [productsLoaded, setProductsLoaded] = useState(false);
 
   useEffect(() => {

@@ -26,10 +26,8 @@ export default function LoginPage() {
             return;
           }
 
-          // Save token
           localStorage.setItem("token", res.data.token);
 
-          // Redirect based on type
           if (res.data.user.type === "admin") {
             toast.success("Welcome Admin");
             window.location.href = "/admin";
@@ -60,10 +58,8 @@ export default function LoginPage() {
           return;
         }
 
-        // Save token
         localStorage.setItem("token", res.data.token);
 
-        // Redirect based on type
         if (res.data.user.type === "admin") {
           toast.success("Welcome Admin");
           window.location.href = "/admin";

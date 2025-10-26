@@ -36,9 +36,7 @@ export default function Cart() {
         setTotal(res.data.total);
         setLabledTotal(res.data.labledTotal);
       })
-      .catch(() => {
-        // keep previous totals on error
-      });
+      .catch(() => {});
   }
 
   useEffect(() => {

@@ -25,7 +25,6 @@ export default function AdminDashboard() {
               },
             })
             .catch((e) => {
-              // If unauthorized, set orders/customers counts to 0 but don't block products
               return { data: [] };
             }),
         ]);

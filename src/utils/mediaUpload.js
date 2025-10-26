@@ -1,5 +1,4 @@
 import { createClient } from "@supabase/supabase-js";
-// Supabase configuration
 const key = `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVkYXVsYmhkZWhlb2NtZHV2bXRuIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAyMTEwMTgsImV4cCI6MjA1NTc4NzAxOH0.xCFsJVMudn2CV3hFjOrQ3PdFi8-ra4pM2YNhbNJBHD4`;
 
 const url = "https://udaulbhdeheocmduvmtn.supabase.co";

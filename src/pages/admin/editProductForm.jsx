@@ -8,7 +8,7 @@ import uploadMediaToSupabase from "../../utils/mediaUpload";
 export default function EditProductForm() {
   const location = useLocation();
   const product = location.state.product;
-  const altNames = product.altNames.join(", "); // Convert array to comma-separated string
+  const altNames = product.altNames.join(", ");
   const navigate = useNavigate();
 
   if (product == null) {
@@ -28,7 +28,7 @@ export default function EditProductForm() {
   async function handleSubmit(event) {
     //prevent page refresh
     event.preventDefault();
-    const altNames = alternativeNames.split(","); //output is an array
+    const altNames = alternativeNames.split(",");
 
     const promisesArray = [];
     let imgUrls = product.images;
@@ -86,7 +86,7 @@ export default function EditProductForm() {
               className="mt-1 w-full rounded-lg border border-pink-200 bg-white px-3 py-2 outline-none focus:ring-2 focus:ring-pink-300"
               value={productId}
               onChange={(e) => setProductId(e.target.value)}
-              disabled // Disable input for product ID
+              disabled
             />
           </div>
           <div>
@@ -119,7 +119,7 @@ export default function EditProductForm() {
               onChange={(e) => {
                 setImageFiles(e.target.files);
               }}
-              multiple // Allow multiple file uploads
+              multiple
             />
           </div>
           <div>

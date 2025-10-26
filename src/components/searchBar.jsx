@@ -20,13 +20,6 @@ export default function SearchBar({
     navigate(q ? `/search?q=${encodeURIComponent(q)}` : "/search");
   }
 
-  // const sizeClasses =
-  //   size === "lg"
-  //     ? "h-12 text-base px-4"
-  //     : size === "sm"
-  //     ? "h-9 text-sm px-3"
-  //     : "h-10 text-sm px-3";
-
   return (
     <form onSubmit={onSubmit} className="w-full flex items-center gap-2">
       <div className="flex-1 flex items-center rounded-lg border border-pink-200 bg-white/80 focus-within:ring-2 focus-within:ring-pink-300 h-10 ">

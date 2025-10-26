@@ -30,7 +30,6 @@ const Customers = () => {
 
       const orders = Array.isArray(res.data) ? res.data : [];
 
-      // Derive unique customers from orders by email
       const map = new Map();
       for (const o of orders) {
         const email = o?.email || "";
@@ -74,7 +73,6 @@ const Customers = () => {
         headers: token ? { Authorization: `Bearer ${token}` } : {},
         data: { email: customerId },
       });
-      // Optimistically remove from UI
       setCustomers((prev) =>
         Array.isArray(prev) ? prev.filter((c) => c._id !== customerId) : []
       );
