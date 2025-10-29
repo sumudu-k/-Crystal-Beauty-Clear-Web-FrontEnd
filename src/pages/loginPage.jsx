@@ -36,8 +36,12 @@ export default function LoginPage() {
             window.location.href = "/";
           }
         })
-        .catch(() => {
-          toast.error("Google login failed");
+        .catch((err) => {
+          if (err.response && err.response.status === 429) {
+            toast.error(err.response.data.message);
+          } else {
+            toast.error("Google login request failed");
+          }
         });
     },
     onError: () => {
@@ -68,8 +72,14 @@ export default function LoginPage() {
           window.location.href = "/";
         }
       })
-      .catch(() => {
-        toast.error("Login request failed");
+      .catch((err) => {
+        if (err.response && err.response.status === 429) {
+          toast.error(err.response.data.message);
+        } else if (err.response && err.response.data?.message) {
+          toast.error(err.response.data.message);
+        } else {
+          toast.error("Login request failed.......");
+        }
       });
   }
 

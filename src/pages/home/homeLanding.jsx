@@ -29,7 +29,7 @@ import "@fontsource/marck-script";
 
 export default function HomeLanding() {
   const [products, setProducts] = useState([]);
-  const [status, setStatus] = useState("loading"); // loading | loaded | error
+  const [status, setStatus] = useState("loading");
 
   useEffect(() => {
     axios
@@ -96,7 +96,7 @@ export default function HomeLanding() {
         </div>
       </section>
 
-      <style jsx>{`
+      <style>{`
         @keyframes slide {
           0%,
           30% {
